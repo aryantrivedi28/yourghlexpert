@@ -24,9 +24,6 @@ export const metadata: Metadata = {
     url: 'https://www.yourghlexperts.com/',
     siteName: 'Your GHL Experts',
   },
-  twitter: {
-    card: 'summary_large_image',
-  },
   icons: {
     icon: [
       {
