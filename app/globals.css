@@ -1,0 +1,99 @@
+/* app/globals.css - Tailwind CSS v4 */
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: 'Poppins', sans-serif;
+  
+  /* Custom colors */
+  --color-space-blue: #1C2E4A;
+  --color-nurture-blue: #0E9BF0;
+  --color-capture-yellow: #F8D000;
+  --color-close-green: #25C97D;
+  --color-space-deep: #0B1421;
+  --color-space-dark: #111E30;
+  --color-yellow-lt: #FFE44D;
+  --color-off-white: #F4F7FA;
+  --color-light-gray: #E8EDF4;
+  --color-mid-gray: #8A9BB0;
+  --color-dark-gray: #4A5568;
+  --color-near-black: #1A202C;
+  
+  /* Custom container */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+/* Custom utility for max-width 1200px */
+@utility container-custom {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  
+  @media (width < 768px) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    color: var(--color-near-black);
+    background: white;
+    line-height: 1.6;
+    font-family: var(--font-poppins);
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@layer components {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease forwards;
+}
+
