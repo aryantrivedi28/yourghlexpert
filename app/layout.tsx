@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import { SchemaMarkup } from '@/components/schema-markup'
 import './globals.css'
 import { Footer } from '@/components/footer'
 import { Navigation } from '@/components/navigation'
 
-const plusJakarta = Plus_Jakarta_Sans({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-sans',
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
 })
 
 export const metadataBase = new URL('https://www.yourghlexperts.com')
@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={plusJakarta.variable}
+      className={poppins.variable}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

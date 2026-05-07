@@ -40,12 +40,12 @@ export function CTASection() {
 
           {/* Heading - matches reference exactly */}
           <h2 id="cta-h2" className="mb-3.5 text-[clamp(26px,3.5vw,40px)] font-extrabold leading-[1.15] tracking-[-0.3px] text-white">
-            Hire a <span className="text-capture-yellow">GoHighLevel Expert</span> Today — Free Strategy Call
+            Hire a <span className="text-capture-yellow">GoHighLevel Expert</span> Today Free Strategy Call
           </h2>
 
           {/* Description - matches reference exactly */}
           <p className="mb-9 text-[17px] leading-relaxed text-white/62">
-            Tell us about your GHL project. Aryan personally reviews every inquiry and reaches out within a few hours — no automated bots, no sales scripts. Just a real GoHighLevel specialist.
+            Tell us about your GHL project. Aryan personally reviews every inquiry and reaches out within a few hours no automated bots, no sales scripts. Just a real GoHighLevel specialist.
           </p>
 
           {/* CTA Buttons - matches reference exactly */}

@@ -52,8 +52,8 @@ export function HeroSection() {
             {/* Lead Paragraph - matches reference copy exactly */}
             <p className="max-w-md text-[15px] leading-relaxed text-white/70 lg:text-[17px]">
               Your GHL Expert team configures your entire{' '}
-              <strong className="font-semibold text-white">GoHighLevel system</strong> — CRM architecture,
-              automation workflows, AI voice agents, and white-label SaaS — so your agency runs on autopilot.{' '}
+              <strong className="font-semibold text-white">GoHighLevel system</strong> CRM architecture,
+              automation workflows, AI voice agents, and white-label SaaS so your agency runs on autopilot.{' '}
               <strong className="font-semibold text-white">200+ GHL projects</strong> delivered across 6 countries.
             </p>
 

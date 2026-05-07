@@ -67,7 +67,7 @@ export function PricingSection() {
             GoHighLevel Expert Service Pricing
           </h2>
           <p className="text-base leading-relaxed text-body">
-            Fixed-price projects only. You know exactly what you are getting — and exactly what you are paying — before we start anything.
+            Fixed-price projects only. You know exactly what you are getting and exactly what you are paying before we start anything.
           </p>
         </div>
 

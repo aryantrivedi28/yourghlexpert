@@ -4,7 +4,7 @@ const cases = [
   {
     company: 'Capviax',
     tag: 'GHL CRM Setup',
-    description: 'Agency had GoHighLevel for 5 months — zero automations running. We rebuilt the entire GHL system in 2 weeks: pipelines, AI-powered lead response, appointment workflows, and real-time Slack alerts for every new lead.',
+    description: 'Agency had GoHighLevel for 5 months zero automations running. We rebuilt the entire GHL system in 2 weeks: pipelines, AI-powered lead response, appointment workflows, and real-time Slack alerts for every new lead.',
     metrics: [
       { num: '70%', label: 'Less manual work' },
       { num: '<10s', label: 'Lead response' },
@@ -24,7 +24,7 @@ const cases = [
   {
     company: 'RiverEnergia',
     tag: 'GHL White Label',
-    description: 'Needed a fully branded SaaS platform for their energy CRM. We built the complete GoHighLevel white label setup — custom domain, branded login, Stripe rebilling, Twilio, Mailgun, and multi-vertical pipeline architecture.',
+    description: 'Needed a fully branded SaaS platform for their energy CRM. We built the complete GoHighLevel white label setup custom domain, branded login, Stripe rebilling, Twilio, Mailgun, and multi-vertical pipeline architecture.',
     metrics: [
       { num: '2.5×', label: 'Follow-up consistency' },
       { num: '<1min', label: 'Lead response' },
@@ -54,7 +54,7 @@ export function CaseStudiesSection() {
             <span className="text-nurture-blue">GoHighLevel Expert Team</span>
           </h2>
           <p className="text-base leading-relaxed text-body">
-            Every number is from a real GHL project — not a projection. This is what a properly configured GoHighLevel system delivers.
+            Every number is from a real GHL project not a projection. This is what a properly configured GoHighLevel system delivers.
           </p>
         </div>
 

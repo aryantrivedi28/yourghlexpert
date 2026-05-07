@@ -7,37 +7,37 @@ export function ServicesSection() {
     {
       icon: FolderOpen,
       title: 'GoHighLevel CRM Setup & Pipeline Configuration',
-      description: 'Full CRM architecture mapped to your actual sales process. Custom pipelines, opportunity stages, lead source tracking, smart lists, and tag strategy — built clean, not from a generic snapshot.',
+      description: 'Full CRM architecture mapped to your actual sales process. Custom pipelines, opportunity stages, lead source tracking, smart lists, and tag strategy built clean, not from a generic snapshot.',
       link: '/ghl-crm-setup/',
     },
     {
       icon: Zap,
       title: 'GHL Workflow Automation & Speed-to-Lead',
-      description: 'Automation workflows that respond to new leads in under 10 seconds — SMS, email, WhatsApp, and internal Slack alerts. No-show reduction campaigns, review requests, and 30-day nurture sequences built in.',
+      description: 'Automation workflows that respond to new leads in under 10 seconds SMS, email, WhatsApp, and internal Slack alerts. No-show reduction campaigns, review requests, and 30-day nurture sequences built in.',
       link: '/ghl-automation/',
     },
     {
       icon: Tag,
       title: 'GoHighLevel White Label Support & SaaS Mode',
-      description: 'Launch your own branded SaaS on GHL. We configure SaaS mode, custom branded domain, Stripe rebilling, Twilio, Mailgun, and reusable sub-account snapshots — so your clients see your brand, not GoHighLevel\'s.',
+      description: 'Launch your own branded SaaS on GHL. We configure SaaS mode, custom branded domain, Stripe rebilling, Twilio, Mailgun, and reusable sub-account snapshots so your clients see your brand, not GoHighLevel\'s.',
       link: '/gohighlevel-white-label-support/',
     },
     {
       icon: User,
       title: 'GoHighLevel Virtual Assistant (GHL VA)',
-      description: 'Need ongoing GHL support? Our dedicated GHL virtual assistants manage your account daily — building workflows, running campaigns, managing pipelines, and keeping your system optimised month after month.',
+      description: 'Need ongoing GHL support? Our dedicated GHL virtual assistants manage your account daily building workflows, running campaigns, managing pipelines, and keeping your system optimised month after month.',
       link: '/ghl-virtual-assistant/',
     },
     {
       icon: Target,
       title: 'GoHighLevel Funnel Builder & Landing Pages',
-      description: 'High-converting landing pages and multi-step funnels built natively inside GoHighLevel — mobile-first, direct response focused, and connected directly to your CRM pipeline and calendar booking system.',
+      description: 'High-converting landing pages and multi-step funnels built natively inside GoHighLevel mobile-first, direct response focused, and connected directly to your CRM pipeline and calendar booking system.',
       link: '/ghl-funnel-builder/',
     },
     {
       icon: RefreshCw,
       title: 'GoHighLevel Migration Service',
-      description: 'Moving from HubSpot, ActiveCampaign, Kajabi, ClickFunnels, Keap, or Zoho? We handle the full GHL migration — contacts, custom fields, pipelines, automations, and team training — with zero data loss.',
+      description: 'Moving from HubSpot, ActiveCampaign, Kajabi, ClickFunnels, Keap, or Zoho? We handle the full GHL migration contacts, custom fields, pipelines, automations, and team training with zero data loss.',
       link: '/gohighlevel-migration/',
     },
   ]
@@ -57,7 +57,7 @@ export function ServicesSection() {
             GoHighLevel Expert Services We Offer
           </h2>
           <p className="text-base leading-relaxed text-body">
-            Every service is delivered by a dedicated GHL expert — fixed scope, fixed price, clear timeline before we start.
+            Every service is delivered by a dedicated GHL expert fixed scope, fixed price, clear timeline before we start.
           </p>
         </div>
 

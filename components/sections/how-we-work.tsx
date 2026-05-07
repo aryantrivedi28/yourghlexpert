@@ -12,13 +12,13 @@ const steps = [
   {
     number: 2,
     title: 'We Scope & Price It',
-    description: 'We audit your current GHL setup, map your workflow, and send a fixed-price scope document — deliverables, timeline, and exact cost before anything starts.',
+    description: 'We audit your current GHL setup, map your workflow, and send a fixed-price scope document deliverables, timeline, and exact cost before anything starts.',
     icon: ClipboardCheck,
   },
   {
     number: 3,
     title: 'Your GHL Expert Builds',
-    description: 'A dedicated GoHighLevel specialist from our team builds your entire system — CRM, automations, integrations, funnels — and tests every single workflow.',
+    description: 'A dedicated GoHighLevel specialist from our team builds your entire system CRM, automations, integrations, funnels and tests every single workflow.',
     icon: Wrench,
   },
   {
@@ -61,7 +61,7 @@ export function HowWeWorkSection() {
             How to Hire a <span className="text-capture-yellow">GoHighLevel Expert</span> in 4 Steps
           </h2>
           <p className="text-base leading-relaxed text-white/60">
-            From first enquiry to a fully live GHL system — here is exactly what happens.
+            From first enquiry to a fully live GHL system here is exactly what happens.
           </p>
         </div>
 

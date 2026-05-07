@@ -4,10 +4,10 @@ import { CheckCircle2 } from 'lucide-react'
 
 export function IntroSection() {
   const capabilities = [
-    'GoHighLevel CRM setup — pipelines, stages, tags, lead source tracking',
-    'Workflow automation — speed-to-lead, no-show reminders, nurture sequences',
-    'GHL white label support — branded domain, login, Stripe, Twilio, Mailgun',
-    'AI voice agent and conversation AI — 24/7 call handling, lead qualification',
+    'GoHighLevel CRM setup pipelines, stages, tags, lead source tracking',
+    'Workflow automation speed-to-lead, no-show reminders, nurture sequences',
+    'GHL white label support branded domain, login, Stripe, Twilio, Mailgun',
+    'AI voice agent and conversation AI 24/7 call handling, lead qualification',
     'GoHighLevel migration from HubSpot, ActiveCampaign, Kajabi, ClickFunnels',
     'Funnel builder, landing pages, and website builds inside GHL',
   ]
@@ -41,11 +41,11 @@ export function IntroSection() {
 
             {/* Paragraphs - matching reference copy and styling */}
             <p className="mb-3.5 text-[20px] leading-relaxed text-dark-gray">
-              A <strong className="font-semibold text-space-blue">GoHighLevel expert</strong> is not a generalist who uses ten platforms. A real GHL expert builds complete systems inside GoHighLevel — from CRM architecture and pipeline configuration to AI automation workflows, lead response sequences, and white-label SaaS platforms — and delivers them live, tested, and working.
+              A <strong className="font-semibold text-space-blue">GoHighLevel expert</strong> is not a generalist who uses ten platforms. A real GHL expert builds complete systems inside GoHighLevel from CRM architecture and pipeline configuration to AI automation workflows, lead response sequences, and white-label SaaS platforms and delivers them live, tested, and working.
             </p>
 
             <p className="mb-5.5 text-[20px] leading-relaxed text-dark-gray">
-              When you hire a <strong className="font-semibold text-space-blue">GHL expert</strong> from our team, you get a dedicated specialist who has delivered these systems across 6 countries and 200+ projects. Every workflow is built around your specific business process — not a template.
+              When you hire a <strong className="font-semibold text-space-blue">GHL expert</strong> from our team, you get a dedicated specialist who has delivered these systems across 6 countries and 200+ projects. Every workflow is built around your specific business process not a template.
             </p>
 
             {/* Capabilities List - matches reference exactly */}
