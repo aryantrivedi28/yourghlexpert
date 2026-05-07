@@ -52,7 +52,7 @@ export function CTASection() {
           <div className="flex flex-col items-center justify-center gap-3.5 sm:flex-row sm:gap-4">
             <Button variant="cta" size="lg" asChild>
               <a
-                href="https://www.ghlscaleup.com/contact"
+                href="/contact"
                 className="inline-flex items-center gap-2"
               >
                 Book Free Strategy Call

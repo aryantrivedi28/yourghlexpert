@@ -143,7 +143,7 @@ export function PricingSection() {
                   className="w-full justify-center"
                   asChild
                 >
-                  <a href="#contact">{plan.ctaText}</a>
+                  <a href="/contact">{plan.ctaText}</a>
                 </Button>
               </div>
             </div>

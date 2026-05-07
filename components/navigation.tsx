@@ -108,7 +108,7 @@ export function Navigation() {
               +91 98932 70210
             </a>
             <Button variant="cta" size="default" asChild>
-              <a href="#contact" className="inline-flex items-center gap-1">
+              <a href="/contact" className="inline-flex items-center gap-1">
                 Book Free Call
                 <ArrowRight className="h-4 w-4" />
               </a>
@@ -174,7 +174,7 @@ export function Navigation() {
           <div className="border-t border-white/10 p-6">
             <Button variant="cta" size="lg" asChild className="w-full">
               <a
-                href="#contact"
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="inline-flex items-center justify-center gap-2"
               >
