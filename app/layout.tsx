@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import { SchemaMarkup } from '@/components/schema-markup'
 import './globals.css'
+import { Footer } from '@/components/footer'
+import { Navigation } from '@/components/navigation'
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -51,13 +52,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={plusJakarta.variable}>
-      <head>
-        <SchemaMarkup />
-      </head>
-      <body className="bg-white antialiased">
+    <html
+      lang="en"
+      className={plusJakarta.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <body className="font-sans">
+        <Navigation />
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Footer />
       </body>
     </html>
   )
