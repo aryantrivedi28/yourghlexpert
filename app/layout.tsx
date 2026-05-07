@@ -15,7 +15,6 @@ export const metadataBase = new URL('https://www.yourghlexperts.com')
 export const metadata: Metadata = {
   title: 'Hire a GoHighLevel Expert | GHL Expert Service | Your GHL Expert',
   description: 'Looking to hire a GoHighLevel expert? Your GHL Expert team builds CRM systems, automation workflows, AI agents & white-label SaaS for agencies. 200+ GHL projects. Book a free call today.',
-  generator: 'v0.app',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   openGraph: {
     title: 'Hire a GoHighLevel Expert | GHL Expert Service',
@@ -30,19 +29,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/favicon.ico',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/favicon-96x96.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/favicon.svg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 

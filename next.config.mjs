@@ -6,10 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Enable React Compiler for performance
-  experimental: {
-    reactCompiler: false,
-  },
   // SEO Headers
   async headers() {
     return [
