@@ -8,37 +8,37 @@ export function ServicesSection() {
       icon: FolderOpen,
       title: 'GoHighLevel CRM Setup & Pipeline Configuration',
       description: 'Full CRM architecture mapped to your actual sales process. Custom pipelines, opportunity stages, lead source tracking, smart lists, and tag strategy built clean, not from a generic snapshot.',
-      link: '/ghl-crm-setup/',
+      link: 'https://www.ghlscaleup.com/services/crm-setup',
     },
     {
       icon: Zap,
       title: 'GHL Workflow Automation & Speed-to-Lead',
       description: 'Automation workflows that respond to new leads in under 10 seconds SMS, email, WhatsApp, and internal Slack alerts. No-show reduction campaigns, review requests, and 30-day nurture sequences built in.',
-      link: '/ghl-automation/',
+      link: 'https://www.ghlscaleup.com/services/workflow-automation',
     },
     {
       icon: Tag,
       title: 'GoHighLevel White Label Support & SaaS Mode',
       description: 'Launch your own branded SaaS on GHL. We configure SaaS mode, custom branded domain, Stripe rebilling, Twilio, Mailgun, and reusable sub-account snapshots so your clients see your brand, not GoHighLevel\'s.',
-      link: '/gohighlevel-white-label-support/',
+      link: 'https://www.ghlscaleup.com/services/saas-setup',
     },
     {
       icon: User,
       title: 'GoHighLevel Virtual Assistant (GHL VA)',
       description: 'Need ongoing GHL support? Our dedicated GHL virtual assistants manage your account daily building workflows, running campaigns, managing pipelines, and keeping your system optimised month after month.',
-      link: '/ghl-virtual-assistant/',
+      link: 'https://www.ghlscaleup.com/services/virtual-assistant',
     },
     {
       icon: Target,
       title: 'GoHighLevel Funnel Builder & Landing Pages',
       description: 'High-converting landing pages and multi-step funnels built natively inside GoHighLevel mobile-first, direct response focused, and connected directly to your CRM pipeline and calendar booking system.',
-      link: '/ghl-funnel-builder/',
+      link: 'https://www.ghlscaleup.com/services/funnel-development',
     },
     {
       icon: RefreshCw,
       title: 'GoHighLevel Migration Service',
       description: 'Moving from HubSpot, ActiveCampaign, Kajabi, ClickFunnels, Keap, or Zoho? We handle the full GHL migration contacts, custom fields, pipelines, automations, and team training with zero data loss.',
-      link: '/gohighlevel-migration/',
+      link: 'https://www.ghlscaleup.com/services/migration',
     },
   ]
 
