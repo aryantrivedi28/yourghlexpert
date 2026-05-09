@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Phone, ArrowRight } from 'lucide-react'
+import { Menu, X, Phone, ArrowRight, Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import BookingModal from './BookingModel'
 
 const navLinks = [
   { href: '#ghl-services', label: 'GHL Services' },
@@ -13,11 +14,13 @@ const navLinks = [
   { href: '#results', label: 'Results' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [openBooking, setOpenBooking] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +42,14 @@ export function Navigation() {
     }
   }, [isMobileMenuOpen])
 
+  const handleOpenBooking = () => {
+    setOpenBooking(true)
+    // Close mobile menu if open
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false)
+    }
+  }
+
   return (
     <>
       <nav
@@ -59,7 +70,6 @@ export function Navigation() {
             className="group flex items-center gap-2 transition-opacity hover:opacity-90"
             aria-label="Your GHL Expert home"
           >
-            {/* Option 1: Use custom logo image from public folder */}
             <div className="relative flex h-50 w-50 items-center justify-center">
               <Image
                 src="/ghlscalup.png"
@@ -70,19 +80,6 @@ export function Navigation() {
                 priority
               />
             </div>
-            
-            {/* Option 2: OR use text logo (uncomment this and comment the above Image component if you want text) */}
-            {/* <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-capture-yellow transition-transform duration-300 group-hover:scale-105">
-              <span className="text-xl font-black text-space-blue">G</span>
-            </div>
-            <div className="flex items-baseline">
-              <span className="text-base font-extrabold tracking-tight text-white lg:text-lg">
-                Your GHL
-              </span>
-              <span className="text-base font-extrabold tracking-tight text-capture-yellow lg:text-lg">
-                Expert
-              </span>
-            </div> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -108,10 +105,13 @@ export function Navigation() {
               +91 98932 70210
             </a>
             <Button variant="cta" size="default" asChild>
-              <a href="/contact" className="inline-flex items-center gap-1">
+              <button
+                onClick={handleOpenBooking}
+                className="inline-flex items-center gap-1 cursor-pointer"
+              >
                 Book Free Call
-                <ArrowRight className="h-4 w-4" />
-              </a>
+                <Calendar className="h-4 w-4" />
+              </button>
             </Button>
           </div>
 
@@ -130,7 +130,7 @@ export function Navigation() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 z-40 bg-space-blue-deep transition-all duration-300 lg:hidden',
+          'fixed inset-0 z-40 bg-space-blue transition-all duration-300 lg:hidden',
           isMobileMenuOpen
             ? 'visible opacity-100'
             : 'invisible opacity-0'
@@ -173,14 +173,13 @@ export function Navigation() {
           {/* Mobile CTA Button */}
           <div className="border-t border-white/10 p-6">
             <Button variant="cta" size="lg" asChild className="w-full">
-              <a
-                href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2"
+              <button
+                onClick={handleOpenBooking}
+                className="inline-flex items-center justify-center gap-2 w-full cursor-pointer"
               >
                 Book Free Strategy Call
-                <ArrowRight className="h-4 w-4" />
-              </a>
+                <Calendar className="h-4 w-4" />
+              </button>
             </Button>
             <p className="mt-3 text-center text-xs text-white/40">
               No pressure. Just a 30-min strategy call.
@@ -188,6 +187,9 @@ export function Navigation() {
           </div>
         </div>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal open={openBooking} setOpen={setOpenBooking} />
     </>
   )
 }

@@ -3,6 +3,23 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  CheckCircle, 
+  Calendar,
+  ArrowRight,
+  Clock,
+  MessageCircle,
+  User,
+  Briefcase,
+  FileText,
+  Globe,
+  Star,
+  Sparkles
+} from 'lucide-react';
+import BookingModal from '@/components/BookingModel';
 // import Breadcrumb from '@/components/layout/Breadcrumb';
 
 export default function ContactClient() {
@@ -16,6 +33,7 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [openBooking, setOpenBooking] = useState(false);
 
   // Get your GHL webhook URL from environment variable
   const GHL_WEBHOOK_URL = process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL || '';
@@ -69,7 +87,7 @@ export default function ContactClient() {
         message: formData.message,
         source: 'Website Contact Form',
         timestamp: new Date().toISOString(),
-        ip_address: '', // Can add client IP if needed
+        ip_address: '',
         user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : '',
       };
 
@@ -81,9 +99,6 @@ export default function ContactClient() {
         },
         body: JSON.stringify(payload),
       });
-
-      // Note: GoHighLevel webhook returns 200 even if it accepts the data
-      // So we don't need to check response status strictly
       
       setIsSuccess(true);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
@@ -106,15 +121,18 @@ export default function ContactClient() {
     }
   };
 
+  const handleOpenBooking = () => {
+    setOpenBooking(true);
+  };
+
   if (isSuccess) {
     return (
       <>
-        {/* <Breadcrumb items={[{ label: 'Contact' }]} /> */}
         <section className="py-16 md:py-20 bg-white" style={{ paddingTop: '100px' }}>
           <div className="max-w-[1200px] mx-auto px-4 md:px-8">
             <div className="max-w-[600px] mx-auto text-center">
               <div className="bg-green-50 border border-green-200 rounded-2xl p-8">
-                <div className="text-5xl mb-4">✓</div>
+                <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
                 <h2 className="text-2xl font-bold text-[#1C2E4A] mb-3">Strategy Call Request Received!</h2>
                 <p className="text-[#4A5568] mb-4">
                   Thanks for reaching out! Aryan will personally review your request and get back to you within 24 hours to schedule your free strategy call.
@@ -136,8 +154,6 @@ export default function ContactClient() {
 
   return (
     <>
-      {/* <Breadcrumb items={[{ label: 'Contact' }]} /> */}
-      
       {/* Contact Section */}
       <section className="py-20 md:py-20 bg-white" style={{ paddingTop: '100px' }}>
         <div className="max-w-[1200px] mx-auto px-4 md:px-8">
@@ -159,12 +175,34 @@ export default function ContactClient() {
                   identify gaps, and outline a clear plan. No pitch — just a technical conversation.
                 </p>
               </div>
+
+              {/* Direct Booking Button */}
+              <button
+                onClick={handleOpenBooking}
+                className="w-full bg-[#0E9BF0] text-white px-6 py-4 rounded-xl text-base font-bold hover:bg-[#0E9BF0]/90 hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
+              >
+                <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Book Your Free Strategy Call Instantly →
+              </button>
+              <p className="text-xs text-center text-[#8A9BB0] mt-2">
+                Instant calendar booking • 30-min session • Free consultation
+              </p>
+
+              {/* OR Divider */}
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-[#E8EDF4]"></div>
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="px-4 bg-white text-sm text-[#8A9BB0]">OR</span>
+                </div>
+              </div>
               
               {/* Contact Details */}
               <div className="space-y-5 mt-8">
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(14,155,240,0.1)] flex items-center justify-center text-base flex-shrink-0">
-                    ✉️
+                  <div className="w-11 h-11 rounded-xl bg-[rgba(14,155,240,0.1)] flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-[#0E9BF0]" />
                   </div>
                   <div>
                     <div className="text-[0.72rem] font-bold text-[#8A9BB0] uppercase tracking-[0.1em] mb-0.5">
@@ -180,8 +218,8 @@ export default function ContactClient() {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(37,201,125,0.1)] flex items-center justify-center text-base flex-shrink-0">
-                    📞
+                  <div className="w-11 h-11 rounded-xl bg-[rgba(37,201,125,0.1)] flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-[#25C97D]" />
                   </div>
                   <div>
                     <div className="text-[0.72rem] font-bold text-[#8A9BB0] uppercase tracking-[0.1em] mb-0.5">
@@ -197,15 +235,15 @@ export default function ContactClient() {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(248,208,0,0.12)] flex items-center justify-center text-base flex-shrink-0">
-                    📍
+                  <div className="w-11 h-11 rounded-xl bg-[rgba(248,208,0,0.12)] flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-5 h-5 text-[#F8D000]" />
                   </div>
                   <div>
                     <div className="text-[0.72rem] font-bold text-[#8A9BB0] uppercase tracking-[0.1em] mb-0.5">
                       Location
                     </div>
                     <span className="text-[0.95rem] font-semibold text-[#1C2E4A]">
-                      Gurugram, India (Remote-first)
+                      Global (Remote)
                     </span>
                   </div>
                 </div>
@@ -215,15 +253,21 @@ export default function ContactClient() {
               <div className="pt-8 border-t border-[#E8EDF4]">
                 <div className="flex items-center gap-6 flex-wrap">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#F8D000] flex items-center justify-center text-xs font-bold text-[#0B1421]">✓</div>
+                    <div className="w-8 h-8 rounded-full bg-[#F8D000] flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-[#0B1421]" />
+                    </div>
                     <span className="text-[0.78rem] text-[#4A5568]">200+ Projects</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#F8D000] flex items-center justify-center text-xs font-bold text-[#0B1421]">✓</div>
+                    <div className="w-8 h-8 rounded-full bg-[#F8D000] flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-[#0B1421]" />
+                    </div>
                     <span className="text-[0.78rem] text-[#4A5568]">50+ Clients</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-[#F8D000] flex items-center justify-center text-xs font-bold text-[#0B1421]">✓</div>
+                    <div className="w-8 h-8 rounded-full bg-[#F8D000] flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-[#0B1421]" />
+                    </div>
                     <span className="text-[0.78rem] text-[#4A5568]">6 Countries</span>
                   </div>
                 </div>
@@ -233,10 +277,10 @@ export default function ContactClient() {
             {/* Right Column - Contact Form */}
             <div className="bg-[#F4F7FA] border border-[#E8EDF4] rounded-2xl p-6 md:p-10">
               <h3 className="text-[1.1rem] font-bold text-[#1C2E4A] mb-2">
-                Book a Free Strategy Call
+                Fill the Form & We'll Reach Out
               </h3>
               <p className="text-[0.84rem] font-light text-[#4A5568] leading-relaxed mb-6">
-                Fill in the details and we will schedule a 30-minute call.
+                Submit your details and we'll get back to you within 24 hours.
               </p>
               
               <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
@@ -310,9 +354,13 @@ export default function ContactClient() {
                       Sending...
                     </>
                   ) : (
-                    'Schedule My Free Call →'
+                    'Submit & We Will Reach Out →'
                   )}
                 </button>
+                
+                <p className="text-[0.7rem] text-center text-[#8A9BB0] mt-2">
+                  We'll respond within 24 hours • No spam, ever
+                </p>
               </form>
             </div>
           </div>
@@ -347,9 +395,9 @@ export default function ContactClient() {
                 </div>
               </div>
               <div className="mt-6 p-4 bg-white rounded-xl border border-[#E8EDF4]">
-                <p className="text-[0.82rem] text-[#4A5568] leading-relaxed">
-                  <strong className="font-semibold text-[#1C2E4A]">📌 Note:</strong> All strategy calls are scheduled within 24-48 hours. 
-                  We'll send you a calendar invite with a Google Meet link.
+                <p className="text-[0.82rem] text-[#4A5568] leading-relaxed flex items-start gap-2">
+                  <span className="text-[#F8D000] text-lg">📌</span>
+                  <span><strong className="font-semibold text-[#1C2E4A]">Note:</strong> All strategy calls are scheduled within 24-48 hours. We'll send you a calendar invite with a Google Meet link.</span>
                 </p>
               </div>
             </div>
@@ -414,6 +462,9 @@ export default function ContactClient() {
           </div>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      <BookingModal open={openBooking} setOpen={setOpenBooking} />
     </>
   );
 }
