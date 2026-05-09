@@ -12,7 +12,7 @@ const navLinks = [
   { href: '#ghl-services', label: 'GHL Services' },
   { href: '#how-it-works', label: 'How It Works' },
   { href: '#results', label: 'Results' },
-  { href: '#pricing', label: 'Pricing' },
+  // { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
 ]
