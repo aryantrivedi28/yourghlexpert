@@ -63,7 +63,7 @@ export function Navigation() {
         aria-label="Site navigation"
       >
         <div className="mx-auto max-w-7xl px-6 h-[70px] flex items-center justify-between lg:h-[70px]">
-          
+
           {/* Logo - with custom image option */}
           <Link
             href="/"
@@ -98,10 +98,11 @@ export function Navigation() {
           {/* Desktop Right Section */}
           <div className="hidden items-center gap-4 lg:flex">
             <a
-              href="tel:+919893270210"
-              className="flex items-center gap-2 text-xs font-semibold text-white/60 transition-colors hover:text-capture-yellow"
+              href="https://wa.me/919893270210?text=Hello"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 text-[0.8rem] hover:text-white transition-colors"
             >
-              <Phone className="h-3.5 w-3.5" />
               +91 98932 70210
             </a>
             <Button variant="cta" size="default" asChild>
@@ -161,10 +162,11 @@ export function Navigation() {
             {/* Mobile Contact Info */}
             <div className="mt-8 border-t border-white/10 pt-6">
               <a
-                href="tel:+919893270210"
-                className="flex items-center justify-center gap-2 rounded-lg bg-white/5 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                href="https://wa.me/919893270210?text=Hello"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 text-[0.8rem] hover:text-white transition-colors"
               >
-                <Phone className="h-4 w-4" />
                 +91 98932 70210
               </a>
             </div>
