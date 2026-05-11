@@ -2,12 +2,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  CheckCircle, 
+import { useEffect, useState } from 'react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  CheckCircle,
   Calendar,
   ArrowRight,
   Clock,
@@ -37,6 +37,11 @@ export default function ContactClient() {
 
   // Get your GHL webhook URL from environment variable
   const GHL_WEBHOOK_URL = process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL || '';
+
+  useEffect(() => {
+  console.log('GHL Webhook URL exists:', !!process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL);
+  console.log('Webhook URL:', process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL);
+}, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -70,13 +75,19 @@ export default function ContactClient() {
       return;
     }
 
+    // Check if webhook URL exists
+    if (!GHL_WEBHOOK_URL) {
+      console.error('GHL_WEBHOOK_URL is not defined in environment variables');
+      setError('Configuration error. Please try again later or contact support.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Split name into first and last name
       const nameParts = formData.name.trim().split(' ');
       const firstName = nameParts[0];
       const lastName = nameParts.slice(1).join(' ') || '';
 
-      // Prepare payload for GoHighLevel
       const payload = {
         name: formData.name,
         first_name: firstName,
@@ -85,13 +96,14 @@ export default function ContactClient() {
         phone: formData.phone || '',
         service: formData.service || 'Not specified',
         message: formData.message,
-        source: 'Website Contact Form',
+        source: 'yourghlexperts Contact Form',
         timestamp: new Date().toISOString(),
-        ip_address: '',
         user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : '',
       };
 
-      // Send to GoHighLevel Webhook
+      console.log('Sending to webhook:', GHL_WEBHOOK_URL);
+      console.log('Payload:', payload);
+
       const response = await fetch(GHL_WEBHOOK_URL, {
         method: 'POST',
         headers: {
@@ -99,23 +111,35 @@ export default function ContactClient() {
         },
         body: JSON.stringify(payload),
       });
-      
+
+      console.log('Response status:', response.status);
+
+      // For no-cors mode, you won't get response details
+      // So check if it's a no-cors request
+      if (response.type === 'opaque' || response.status === 0) {
+        // With no-cors, we can't check success but assume it's sent
+        console.log('Request sent (no-cors mode)');
+      } else if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Webhook error response:', errorText);
+        throw new Error(`Webhook failed with status ${response.status}`);
+      }
+
       setIsSuccess(true);
       setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      
-      // Optional: Track conversion in Google Analytics
+
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'generate_lead', {
           event_category: 'form',
           event_label: 'contact_form_submission',
         });
       }
-      
+
       setTimeout(() => setIsSuccess(false), 5000);
-      
+
     } catch (err) {
       console.error('Form submission error:', err);
-      setError('Something went wrong. Please try again.');
+      setError('Something went wrong. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -158,7 +182,7 @@ export default function ContactClient() {
       <section className="py-20 md:py-20 bg-white" style={{ paddingTop: '100px' }}>
         <div className="max-w-[1200px] mx-auto px-4 md:px-8">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
-            
+
             {/* Left Column - Contact Info */}
             <div className="space-y-6">
               <div>
@@ -171,7 +195,7 @@ export default function ContactClient() {
                   <span className="text-[#0E9BF0]">GHL Project</span>
                 </h1>
                 <p className="text-[0.92rem] font-light text-[#4A5568] leading-relaxed mb-6">
-                  Book a free 30-minute strategy call. We learn your business, review your setup, 
+                  Book a free 30-minute strategy call. We learn your business, review your setup,
                   identify gaps, and outline a clear plan. No pitch — just a technical conversation.
                 </p>
               </div>
@@ -197,7 +221,7 @@ export default function ContactClient() {
                   <span className="px-4 bg-white text-sm text-[#8A9BB0]">OR</span>
                 </div>
               </div>
-              
+
               {/* Contact Details */}
               <div className="space-y-5 mt-8">
                 <div className="flex items-center gap-4">
@@ -208,15 +232,15 @@ export default function ContactClient() {
                     <div className="text-[0.72rem] font-bold text-[#8A9BB0] uppercase tracking-[0.1em] mb-0.5">
                       Email
                     </div>
-                    <Link 
-                      href="mailto:aryan@ghlscaleup.com" 
+                    <Link
+                      href="mailto:aryan@ghlscaleup.com"
                       className="text-[0.95rem] font-semibold text-[#1C2E4A] hover:text-[#0E9BF0] transition-colors"
                     >
                       aryan@ghlscaleup.com
                     </Link>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="w-11 h-11 rounded-xl bg-[rgba(37,201,125,0.1)] flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-[#25C97D]" />
@@ -225,15 +249,15 @@ export default function ContactClient() {
                     <div className="text-[0.72rem] font-bold text-[#8A9BB0] uppercase tracking-[0.1em] mb-0.5">
                       Phone
                     </div>
-                    <Link 
-                      href="tel:+919893270210" 
+                    <Link
+                      href="tel:+919893270210"
                       className="text-[0.95rem] font-semibold text-[#1C2E4A] hover:text-[#0E9BF0] transition-colors"
                     >
                       +91 98932 70210
                     </Link>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4">
                   <div className="w-11 h-11 rounded-xl bg-[rgba(248,208,0,0.12)] flex items-center justify-center flex-shrink-0">
                     <Globe className="w-5 h-5 text-[#F8D000]" />
@@ -273,7 +297,7 @@ export default function ContactClient() {
                 </div>
               </div>
             </div>
-            
+
             {/* Right Column - Contact Form */}
             <div className="bg-[#F4F7FA] border border-[#E8EDF4] rounded-2xl p-6 md:p-10">
               <h3 className="text-[1.1rem] font-bold text-[#1C2E4A] mb-2">
@@ -282,35 +306,35 @@ export default function ContactClient() {
               <p className="text-[0.84rem] font-light text-[#4A5568] leading-relaxed mb-6">
                 Submit your details and we'll get back to you within 24 hours.
               </p>
-              
+
               <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your Name *" 
+                  placeholder="Your Name *"
                   required
                   className="w-full px-4 py-3 rounded-[10px] border border-[#E8EDF4] bg-white text-[0.85rem] text-[#1C2E4A] placeholder:text-[#8A9BB0] focus:outline-none focus:border-[#0E9BF0] transition-colors"
                 />
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Email Address *" 
+                  placeholder="Email Address *"
                   required
                   className="w-full px-4 py-3 rounded-[10px] border border-[#E8EDF4] bg-white text-[0.85rem] text-[#1C2E4A] placeholder:text-[#8A9BB0] focus:outline-none focus:border-[#0E9BF0] transition-colors"
                 />
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="Phone Number" 
+                  placeholder="Phone Number"
                   className="w-full px-4 py-3 rounded-[10px] border border-[#E8EDF4] bg-white text-[0.85rem] text-[#1C2E4A] placeholder:text-[#8A9BB0] focus:outline-none focus:border-[#0E9BF0] transition-colors"
                 />
-                <select 
+                <select
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
@@ -326,21 +350,21 @@ export default function ContactClient() {
                   <option value="Shopify / Ecommerce">Shopify / Ecommerce</option>
                   <option value="Other">Other</option>
                 </select>
-                <textarea 
+                <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project... *" 
+                  placeholder="Tell us about your project... *"
                   rows={4}
                   required
                   className="w-full px-4 py-3 rounded-[10px] border border-[#E8EDF4] bg-white text-[0.85rem] text-[#1C2E4A] placeholder:text-[#8A9BB0] focus:outline-none focus:border-[#0E9BF0] transition-colors resize-vertical"
                 />
-                
+
                 {error && (
                   <p className="text-red-500 text-sm">{error}</p>
                 )}
-                
-                <button 
+
+                <button
                   type="submit"
                   disabled={isSubmitting}
                   className="bg-[#F8D000] text-[#0B1421] px-6 py-3.5 rounded-[10px] text-[0.88rem] font-bold hover:bg-[#FFE44D] hover:-translate-y-[1px] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -357,7 +381,7 @@ export default function ContactClient() {
                     'Submit & We Will Reach Out →'
                   )}
                 </button>
-                
+
                 <p className="text-[0.7rem] text-center text-[#8A9BB0] mt-2">
                   We'll respond within 24 hours • No spam, ever
                 </p>
