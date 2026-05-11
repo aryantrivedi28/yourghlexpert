@@ -39,9 +39,9 @@ export default function ContactClient() {
   const GHL_WEBHOOK_URL = process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL || '';
 
   useEffect(() => {
-  console.log('GHL Webhook URL exists:', !!process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL);
-  console.log('Webhook URL:', process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL);
-}, []);
+    console.log('GHL Webhook URL exists:', !!process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL);
+    console.log('Webhook URL:', process.env.NEXT_PUBLIC_GHL_WEBHOOK_URL);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -250,7 +250,9 @@ export default function ContactClient() {
                       Phone
                     </div>
                     <Link
-                      href="tel:+919893270210"
+                      href="https://wa.me/919893270210?text=Hello"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-[0.95rem] font-semibold text-[#1C2E4A] hover:text-[#0E9BF0] transition-colors"
                     >
                       +91 98932 70210
